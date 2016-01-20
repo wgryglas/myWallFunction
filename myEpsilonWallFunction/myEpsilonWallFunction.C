@@ -172,7 +172,7 @@ void Foam::myEpsilonWallFunction::updateCoeffs()
 {
     ASSERT_INIT
     // Apply epsilon value to bc
-
+    db().
 
 
 
