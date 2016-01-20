@@ -1,0 +1,4 @@
+myEpsilonWallFunction/myEpsilonWallFunction.C
+myNutKWallFunction/myNutKWallFunction.C
+
+LIB = $(FOAM_USER_LIBBIN)/libmyWallFunctions
