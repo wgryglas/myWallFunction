@@ -77,6 +77,9 @@ class myEpsilonWallFunction
 
         bool init_;
 
+        scalarField G_;
+
+
     // Member helper functions
         void calcNBFaces();
 

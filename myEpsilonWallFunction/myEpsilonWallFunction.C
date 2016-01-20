@@ -46,17 +46,18 @@ License
 #define ASSERT_INIT\
     if(!init_) \
     { \
-    } \
+       ASSERT_INIT \
+       calacNBFaces(); \
+       initG(); \
+       init_=true;\
+    }
 
 
 // * * * * * * * * * * * * * * * * Private members  * * * * * * * * * * * * * * //
 void Foam::myEpsilonWallFunction::calcNBFaces()
 {
-    ASSERT_MASTER
-
     const volScalarField& epsilon = static_cast<const volScalarField&>( this->dimensionedInternalField() );
     const volScalarField::GeometricBoundaryField& epsBF = epsilon.boundaryField();
-
 
     DynamicList<label> dNb;
 
@@ -86,11 +87,13 @@ void Foam::myEpsilonWallFunction::calcNBFaces()
             }
         }
     }
+
+    nbBFaces=dNb;
 }
 
-void Foam::initG()
+void Foam::myEpsilonWallFunction::initG()
 {
-
+    G_.setSize(nbBFaces.size(),0);
 }
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
@@ -167,6 +170,16 @@ Foam::myEpsilonWallFunction::myEpsilonWallFunction
 
 void Foam::myEpsilonWallFunction::updateCoeffs()
 {
+    ASSERT_INIT
+    // Apply epsilon value to bc
+
+
+
+
+    ASSERT_MASTER
+    //Modify G field
+
+
 }
 
 
